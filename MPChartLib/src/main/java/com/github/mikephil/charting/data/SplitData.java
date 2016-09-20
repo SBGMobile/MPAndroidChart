@@ -31,6 +31,7 @@ public class SplitData extends ChartData<ISplitDataSet> {
      */
     public ISplitDataSet getDataSet() {
         return mDataSets != null ? mDataSets.get(0) : null;
+
     }
 
     /**

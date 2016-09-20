@@ -103,7 +103,6 @@ public class SplitChartRenderer extends DataRenderer {
         float rightX = width;
 
 
-
         final IValueFormatter valueFormatter = dataSet.getValueFormatter();
         final boolean multiline = dataSet.isMultiLine();
 
