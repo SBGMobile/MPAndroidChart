@@ -43,6 +43,7 @@ import com.xxmassdeveloper.mpchartexample.RadarChartActivitry;
 import com.xxmassdeveloper.mpchartexample.RealtimeLineChartActivity;
 import com.xxmassdeveloper.mpchartexample.ScatterChartActivity;
 import com.xxmassdeveloper.mpchartexample.ScrollViewActivity;
+import com.xxmassdeveloper.mpchartexample.SplitChartActivity;
 import com.xxmassdeveloper.mpchartexample.StackedBarActivity;
 import com.xxmassdeveloper.mpchartexample.StackedBarActivityNegative;
 import com.xxmassdeveloper.mpchartexample.fragments.SimpleChartDemo;
@@ -147,6 +148,11 @@ public class MainActivity extends Activity implements OnItemClickListener {
         objects.add(new ContentItem(
                 "Half PieChart",
                 "This demonstrates how to create a 180 degree PieChart."));
+
+        objects.add(new ContentItem(
+                "Split chart",
+                "Simple demonstration of Split Chart"
+        ));
 
         MyAdapter adapter = new MyAdapter(this, objects);
 
@@ -288,6 +294,10 @@ public class MainActivity extends Activity implements OnItemClickListener {
                 break;
             case 31:
                 i = new Intent(this, HalfPieChartActivity.class);
+                startActivity(i);
+                break;
+            case 32:
+                i = new Intent(this, SplitChartActivity.class);
                 startActivity(i);
                 break;
 
