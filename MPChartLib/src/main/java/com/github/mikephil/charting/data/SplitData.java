@@ -30,7 +30,7 @@ public class SplitData extends ChartData<ISplitDataSet> {
      * @return
      */
     public ISplitDataSet getDataSet() {
-        return mDataSets.get(0);
+        return mDataSets != null ? mDataSets.get(0) : null;
     }
 
     /**
@@ -52,7 +52,12 @@ public class SplitData extends ChartData<ISplitDataSet> {
 
     @Override
     public Entry getEntryForHighlight(Highlight highlight) {
-        return getDataSet().getEntryForIndex((int) highlight.getX());
+        final ISplitDataSet dataSet = getDataSet();
+        if (dataSet == null) {
+            return null;
+        }
+
+        return dataSet.getEntryForIndex((int) highlight.getX());
     }
 
     /**

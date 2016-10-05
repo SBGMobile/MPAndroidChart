@@ -68,7 +68,9 @@ public class SplitChart extends Chart<SplitData>{
 
         float offsetLeft = 0f, offsetRight = 0f, offsetTop = 0f, offsetBottom = 0f;
 
-        offsetTop += ((SplitChartRenderer) getRenderer()).getLabelHeightOffset(mData.getDataSet()) + getLineThickness();
+        if (mData != null) {
+            offsetTop += ((SplitChartRenderer) getRenderer()).getLabelHeightOffset(mData.getDataSet()) + getLineThickness();
+        }
 
         mViewPortHandler.restrainViewPort(offsetLeft, offsetTop, offsetRight, offsetBottom);
     }

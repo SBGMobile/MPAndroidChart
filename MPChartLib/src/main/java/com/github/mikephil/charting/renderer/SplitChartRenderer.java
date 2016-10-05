@@ -51,10 +51,12 @@ public class SplitChartRenderer extends DataRenderer {
 
         SplitData splitData = mSplitChart.getData();
 
-        final ISplitDataSet set = splitData.getDataSet();
+        if (splitData != null) {
+            final ISplitDataSet set = splitData.getDataSet();
 
-        if (set.isVisible() && set.getEntryCount() > 0) {
-            drawDataSet(c, set, width, height);
+            if (set.isVisible() && set.getEntryCount() > 0) {
+                drawDataSet(c, set, width, height);
+            }
         }
     }
 
@@ -84,6 +86,15 @@ public class SplitChartRenderer extends DataRenderer {
 
     @Override
     public void drawValues(Canvas canvas) {
+
+        final SplitData data = mSplitChart.getData();
+
+        if (data == null) {
+            return;
+        }
+
+        final ISplitDataSet dataSet = data.getDataSet();
+
         float width = mViewPortHandler.getChartWidth();
         float height = mViewPortHandler.getChartHeight();
 
@@ -91,7 +102,8 @@ public class SplitChartRenderer extends DataRenderer {
         float y = height - mSplitChart.getLineThickness() - textSpacer;
         float rightX = width;
 
-        final ISplitDataSet dataSet = mSplitChart.getData().getDataSet();
+
+
         final IValueFormatter valueFormatter = dataSet.getValueFormatter();
         final boolean multiline = dataSet.isMultiLine();
 
