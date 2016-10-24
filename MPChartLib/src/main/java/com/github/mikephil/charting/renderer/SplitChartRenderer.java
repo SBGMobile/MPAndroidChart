@@ -61,7 +61,8 @@ public class SplitChartRenderer extends DataRenderer {
     }
 
     private void drawDataSet(Canvas canvas, ISplitDataSet set, float width, float height) {
-        final float lineThickness = mSplitChart.getLineThickness();
+        final float lineThickness = getLineThickness(set);
+
         float phaseX = mAnimator.getPhaseX();
         float leftX = mViewPortHandler.contentLeft();
         float y = height - (lineThickness / 2);
@@ -84,6 +85,16 @@ public class SplitChartRenderer extends DataRenderer {
         canvas.restore();
     }
 
+    private float getLineThickness(ISplitDataSet set) {
+        int thicknessDp = set.getLineThickness();
+        if (thicknessDp > 20)
+            thicknessDp = 20;
+        if (thicknessDp < 1)
+            thicknessDp = 1;
+
+        return Utils.convertDpToPixel(thicknessDp);
+    }
+
     @Override
     public void drawValues(Canvas canvas) {
 
@@ -99,7 +110,7 @@ public class SplitChartRenderer extends DataRenderer {
         float height = mViewPortHandler.getChartHeight();
 
         float leftX = mViewPortHandler.contentLeft();
-        float y = height - mSplitChart.getLineThickness() - textSpacer;
+        float y = height - getLineThickness(dataSet) - textSpacer;
         float rightX = width;
 
 
@@ -178,12 +189,12 @@ public class SplitChartRenderer extends DataRenderer {
 
         final int valueHeight = Utils.calcTextHeight(mValuePaint, formattedLeftValue);
         final int labelHeight = Utils.calcTextHeight(mLabelPaint, leftEntry.getLabel());
-
+        final float lineThickness = getLineThickness(dataSet);
 
         if (multiline) {
-            return valueHeight + labelHeight + 2 * textSpacer;
+            return (valueHeight + labelHeight + 2 * textSpacer) + lineThickness;
         } else {
-            return Math.max(valueHeight, labelHeight) + textSpacer;
+            return Math.max(valueHeight, labelHeight) + textSpacer + lineThickness;
         }
 
     }

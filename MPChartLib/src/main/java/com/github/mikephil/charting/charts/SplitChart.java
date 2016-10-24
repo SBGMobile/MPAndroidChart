@@ -10,11 +10,8 @@ import com.github.mikephil.charting.data.SplitData;
 import com.github.mikephil.charting.interfaces.datasets.ISplitDataSet;
 import com.github.mikephil.charting.listener.ChartTouchListener;
 import com.github.mikephil.charting.renderer.SplitChartRenderer;
-import com.github.mikephil.charting.utils.Utils;
 
 public class SplitChart extends Chart<SplitData>{
-
-    private float mLineThickness = 5f;
 
     private float mDrawFraction;
 
@@ -69,7 +66,7 @@ public class SplitChart extends Chart<SplitData>{
         float offsetLeft = 0f, offsetRight = 0f, offsetTop = 0f, offsetBottom = 0f;
 
         if (mData != null) {
-            offsetTop += ((SplitChartRenderer) getRenderer()).getLabelHeightOffset(mData.getDataSet()) + getLineThickness();
+            offsetTop += ((SplitChartRenderer) getRenderer()).getLabelHeightOffset(mData.getDataSet());
         }
 
         mViewPortHandler.restrainViewPort(offsetLeft, offsetTop, offsetRight, offsetBottom);
@@ -83,7 +80,7 @@ public class SplitChart extends Chart<SplitData>{
 
 
         if (mData != null && getLayoutParams().height == LayoutParams.WRAP_CONTENT) {
-            height = (int) Math.ceil(((SplitChartRenderer) getRenderer()).getLabelHeightOffset(mData.getDataSet()) + getLineThickness());
+            height = (int) Math.ceil(((SplitChartRenderer) getRenderer()).getLabelHeightOffset(mData.getDataSet()));
             height += getPaddingBottom() + getPaddingTop();
         }
         setMeasuredDimension(width, height|MeasureSpec.EXACTLY);
@@ -110,18 +107,6 @@ public class SplitChart extends Chart<SplitData>{
         return 0;
     }
 
-    public void setLineThickness(int thicknessDp) {
-        if (thicknessDp > 20)
-            thicknessDp = 20;
-        if (thicknessDp < 1)
-            thicknessDp = 1;
-
-        mLineThickness = Utils.convertDpToPixel(thicknessDp);
-    }
-
-    public float getLineThickness() {
-        return mLineThickness;
-    }
 
     private void calculateFractions() {
         float yValueSum = mData.getYValueSum();

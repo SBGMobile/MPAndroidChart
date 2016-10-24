@@ -37,13 +37,11 @@ public class SplitChartActivity extends DemoBase {
 
         mChart.setHighlightPerTapEnabled(true);
 
-        mChart.setLineThickness(3);
 
         setData(2, 100);
 
         mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
         // mChart.spin(2000, 0, 360);
-
 
 
     }
@@ -58,11 +56,16 @@ public class SplitChartActivity extends DemoBase {
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
         for (int i = 0; i < count; i++) {
-            entries.add(new PieEntry((float) ((Math.random() * mult) + mult / 5), mParties[i % mParties.length]));
+            float value = (float) ((Math.random() * mult) + mult / 5);
+            if (i == 1) {
+                value *= -1;
+            }
+            final PieEntry pieEntry = new PieEntry(value, mParties[i % mParties.length]);
+            entries.add(pieEntry);
         }
 
         SplitDataSet dataSet = new SplitDataSet(entries, "Election Results");
-
+        dataSet.setLineThickness(3);
         dataSet.setLabelTextColor(Color.BLACK);
         Typeface typeFace = Typeface.create("Roboto", Typeface.BOLD);
         dataSet.setLabelTypeFace(typeFace);
@@ -81,7 +84,6 @@ public class SplitChartActivity extends DemoBase {
 
         dataSet.setColors(colors);
         //dataSet.setSelectionShift(0f);
-
 
 
         SplitData data = new SplitData(dataSet);

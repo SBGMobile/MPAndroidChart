@@ -17,4 +17,8 @@ public interface ISplitDataSet extends IDataSet<PieEntry> {
     void setMultiline(boolean mMultiline);
 
     void setLabelTextSize(float labelTextSize);
+
+    int getLineThickness();
+
+    void setLineThickness(int lineThickness);
 }

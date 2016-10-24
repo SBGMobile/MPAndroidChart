@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SplitDataSet extends DataSet<PieEntry> implements ISplitDataSet{
-    private float mLineThickness = 5f;
+
+
+    private int mLineThickness = 1;
     private boolean mMultiline;
     private Typeface mLabelTypeFace;
     private int mLabelTextColor;
@@ -79,5 +81,14 @@ public class SplitDataSet extends DataSet<PieEntry> implements ISplitDataSet{
     @Override
     public void setLabelTextSize(float labelTextSize) {
         this.mLabelTextSize = Utils.convertDpToPixel(labelTextSize);
+    }
+
+    @Override
+    public int getLineThickness() {
+        return mLineThickness;
+    }
+
+    public void setLineThickness(int lineThickness) {
+        this.mLineThickness = lineThickness;
     }
 }

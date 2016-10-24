@@ -71,7 +71,7 @@ public class SplitData extends ChartData<ISplitDataSet> {
         float sum = 0;
 
         for (int i = 0; i < getDataSet().getEntryCount(); i++)
-            sum += getDataSet().getEntryForIndex(i).getY();
+            sum += Math.abs(getDataSet().getEntryForIndex(i).getY());
 
 
         return sum;
