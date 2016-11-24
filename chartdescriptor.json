@@ -14,8 +14,8 @@
 
   "files":
     [
-      {"includePattern":"build/libs(.*)*/(.*\\.jar)", "uploadPattern":""},
-      {"includePattern":"build/aar/MPChartLib-release.aar", "uploadPattern":""}
+      {"includePattern":"build/libs(.*)*/(.*\\.jar)", "uploadPattern":"3.0.1"},
+      {"includePattern":"build/aar/MPChartLib-release.aar", "uploadPattern":"3.0.1"}
     ]
   ,
   "publish":true
