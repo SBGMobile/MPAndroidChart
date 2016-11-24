@@ -9,13 +9,17 @@
     "name": "3.0.1",
     "desc": "This is a version",
     "released": "2016-11-23",
+    "vcs_tag": "0.5",
+    "attributes": [{"name": "VerAtt1", "values" : ["VerVal1"], "type": "string"},
+      {"name": "VerAtt2", "values" : [1, 3.3, 5], "type": "number"},
+      {"name": "VerAtt3", "values" : ["2015-01-01T19:43:37+0100"], "type": "date"}],
     "gpgSign": true
   },
 
   "files":
     [
-      {"includePattern":"build/libs(.*)*/(.*\\.jar)", "uploadPattern":"3.0.1"},
-      {"includePattern":"build/aar/MPChartLib-release.aar", "uploadPattern":"3.0.1"}
+      {"includePattern":"build/libs(.*)*/(.*\\.jar)", "uploadPattern":""},
+      {"includePattern":"build/aar/MPChartLib-release.aar", "uploadPattern":""}
     ]
   ,
   "publish":true
