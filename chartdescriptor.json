@@ -18,8 +18,8 @@
 
   "files":
     [
-      {"includePattern":"build/libs(.*)*/(.*\\.jar)", "uploadPattern":""},
-      {"includePattern":"build/aar/MPChartLib-release.aar", "uploadPattern":""}
+      {"includePattern":"MPChartLib/build/libs(.*)*/(.*\\.jar)", "uploadPattern":""},
+      {"includePattern":"MPChartLib/build/aar/MPChartLib-release.aar", "uploadPattern":""}
     ]
   ,
   "publish":true
