@@ -72,6 +72,16 @@ artifacts {
     archives javadocJar
 }
 
+task createPom  {
+    pom {
+        project {
+            groupId 'com.github.sbgmobile'
+            artifactId 'MPAndroidChart'
+            version '3.0.1'
+        }
+    }.writeTo("$buildDir/libs/pom.xml")
+}
+
 publishing{
 
     publications{

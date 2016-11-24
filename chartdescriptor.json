@@ -8,12 +8,14 @@
   "version:":{
     "name": "3.0.1",
     "desc": "This is a version",
-    "released": "2016-11-23"
+    "released": "2016-11-23",
+    "gpgSign": true
   },
 
   "files":
     [
-      {"includePattern":"build/libs(.*)*/(.*\\.jar)", "uploadPattern":""}
+      {"includePattern":"build/libs(.*)*/(.*\\.jar)", "uploadPattern":""},
+      {"includePattern":"build/aar/MPChartLib-release.aar", "uploadPattern":""}
     ]
   ,
   "publish":true
