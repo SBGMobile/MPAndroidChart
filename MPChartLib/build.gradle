@@ -86,10 +86,11 @@ publishing{
 
     publications{
         mavenJava(MavenPublication){
-            groupId 'com.sbg.charting'
-            artifactId 'mpandroidchart'
-            version '1.0'
+            groupId 'com.github.sbgmobile'
+            artifactId 'mpandroidchart-sbgmobile'
+            version '3.0.2'
             artifact(sourcesJar)
+            artifact(javadocJar)
             artifact("$buildDir/outputs/aar/MPChartLib-release.aar")
             pom.withXml {
                 def dependenciesNode = asNode().appendNode('dependencies')
@@ -103,6 +104,31 @@ publishing{
                         dependencyNode.appendNode('version', it.version)
                     }
                 }
+            }
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['mavenJava']
+    publish = true
+    pkg {
+        repo = 'SBGMobile-MPAndroidchart'
+        name = 'MPAndroidChart'
+        userOrg = 'sbgmobile'
+        licenses = ['Apache-2.0']
+        vcsUrl = 'https://github.com/SBGMobile/MPAndroidChart.git'
+        version {
+            name = '3.0.2'
+            gpg{
+                sign = true
+            }
+            mavenCentralSync {
+                sync = true
+                user = System.getenv('SONATYPE_USERNAME')
+                password = System.getenv('SONATYPE_PASSWORD')
             }
         }
     }
