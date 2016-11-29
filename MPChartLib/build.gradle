@@ -5,7 +5,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 //apply plugin: 'com.github.dcendents.android-maven'
 //apply plugin: 'realm-android'
-
+def currentVersion = '3.0.4'
 android {
     compileSdkVersion 24
     buildToolsVersion '23.0.3'
@@ -14,7 +14,7 @@ android {
         minSdkVersion 9
         targetSdkVersion 24
         versionCode 3
-        versionName '3.0.0'
+        versionName currentVersion
     }
     buildTypes {
         release {
@@ -80,7 +80,7 @@ publishing{
         mavenJava(MavenPublication){
             groupId 'com.github.sbgmobile'
             artifactId 'mpandroidchart-sbgmobile'
-            version '3.0.3'
+            version currentVersion
             artifact(sourcesJar)
             artifact(javadocJar)
             artifact("$buildDir/outputs/aar/MPChartLib-release.aar")
@@ -113,7 +113,7 @@ bintray {
         licenses = ['Apache-2.0']
         vcsUrl = 'https://github.com/SBGMobile/MPAndroidChart.git'
         version {
-            name = '3.0.2'
+            name = currentVersion
             gpg{
                 sign = true
             }
