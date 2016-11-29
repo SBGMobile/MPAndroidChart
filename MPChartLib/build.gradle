@@ -1,6 +1,8 @@
+
 apply plugin: 'com.android.library'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
+apply plugin: 'com.jfrog.bintray'
 //apply plugin: 'com.github.dcendents.android-maven'
 //apply plugin: 'realm-android'
 
@@ -72,23 +74,13 @@ artifacts {
     archives javadocJar
 }
 
-task createPom  {
-    pom {
-        project {
-            groupId 'com.github.sbgmobile'
-            artifactId 'MPAndroidChart'
-            version '3.0.1'
-        }
-    }.writeTo("$buildDir/libs/pom.xml")
-}
 
 publishing{
-
     publications{
         mavenJava(MavenPublication){
             groupId 'com.github.sbgmobile'
             artifactId 'mpandroidchart-sbgmobile'
-            version '3.0.2'
+            version '3.0.3'
             artifact(sourcesJar)
             artifact(javadocJar)
             artifact("$buildDir/outputs/aar/MPChartLib-release.aar")
