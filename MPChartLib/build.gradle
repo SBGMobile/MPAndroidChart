@@ -5,7 +5,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 //apply plugin: 'com.github.dcendents.android-maven'
 //apply plugin: 'realm-android'
-def currentVersion = '3.0.5'
+def currentVersion = '3.0.6'
 android {
     compileSdkVersion 24
     buildToolsVersion '23.0.3'
@@ -118,7 +118,7 @@ bintray {
                 sign = true
             }
             mavenCentralSync {
-                sync = false
+                sync = true
                 user = System.getenv('SONATYPE_USERNAME')
                 password = System.getenv('SONATYPE_PASSWORD')
             }
