@@ -7,12 +7,12 @@ apply plugin: 'com.jfrog.bintray'
 //apply plugin: 'realm-android'
 def currentVersion = '3.0.7'
 android {
-    compileSdkVersion 24
+    compileSdkVersion 25
     buildToolsVersion '23.0.3'
     // resourcePrefix 'mpcht'
     defaultConfig {
         minSdkVersion 9
-        targetSdkVersion 24
+        targetSdkVersion 25
         versionCode 3
         versionName currentVersion
     }
@@ -43,6 +43,7 @@ dependencies {
     //provided 'io.realm:realm-android:0.87.5' // "optional" dependency to realm-database API
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
+    compile 'com.android.support:percent:25.1.1'
 }
 
 android.libraryVariants.all { variant ->
