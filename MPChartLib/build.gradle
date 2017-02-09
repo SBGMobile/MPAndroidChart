@@ -5,7 +5,7 @@ apply plugin: 'maven-publish'
 apply plugin: 'com.jfrog.bintray'
 //apply plugin: 'com.github.dcendents.android-maven'
 //apply plugin: 'realm-android'
-def currentVersion = '3.0.7'
+def currentVersion = '3.0.8'
 android {
     compileSdkVersion 25
     buildToolsVersion '23.0.3'
