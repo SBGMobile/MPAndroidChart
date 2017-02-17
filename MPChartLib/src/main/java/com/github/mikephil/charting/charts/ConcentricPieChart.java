@@ -96,6 +96,11 @@ public class ConcentricPieChart extends PercentRelativeLayout {
         outerPieChart.setCenterTextColor(centerTextColor);
     }
 
+    public void setSelectionShiftEnabled(boolean selectionShiftEnabled) {
+        outerDataSet.setHighlightEnabled(selectionShiftEnabled);
+        outerPieChart.setHighlightPerTapEnabled(selectionShiftEnabled);
+    }
+
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
