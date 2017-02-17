@@ -104,9 +104,14 @@ public class ConcentricPieChart extends PercentRelativeLayout {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
+        int width = getSmallestDimension(right, bottom);
         if (changed) {
-            setScaledValues(right);
+            setScaledValues(width);
         }
+    }
+
+    private int getSmallestDimension(int right, int bottom) {
+        return right < bottom ? right : bottom;
     }
 
     private void initialise(Context context) {
