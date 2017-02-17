@@ -115,14 +115,32 @@ public class ConcentricPieChart extends PercentRelativeLayout {
     }
 
     private void initialise(Context context) {
-        innerPieChart = getPieChart(context, INNER_HOLE_RADIUS);
-        outerPieChart = getPieChart(context, OUTER_HOLE_RADIUS);
-        addView(innerPieChart);
-        addView(outerPieChart);
+        initPieCharts(context);
+        initDataSets();
+        addPieChartsToView();
+        initPieChartParams();
+        setOnChartValueSelectedListener();
+        resizeHandler = new Handler();
+    }
+
+    private void initPieChartParams() {
         setPieChartParams(outerPieChart, OUTER_PERCENT);
         setPieChartParams(innerPieChart, INNER_PERCENT);
-        resizeHandler = new Handler();
-        setOnChartValueSelectedListener();
+    }
+
+    private void addPieChartsToView() {
+        addView(innerPieChart);
+        addView(outerPieChart);
+    }
+
+    private void initDataSets() {
+        outerDataSet = getPieDataSet(null);
+        innerDataSet = getPieDataSet(null);
+    }
+
+    private void initPieCharts(Context context) {
+        innerPieChart = getPieChart(context, INNER_HOLE_RADIUS);
+        outerPieChart = getPieChart(context, OUTER_HOLE_RADIUS);
     }
 
     private void setOnChartValueSelectedListener() {
