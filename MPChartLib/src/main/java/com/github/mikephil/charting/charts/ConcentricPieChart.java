@@ -101,6 +101,14 @@ public class ConcentricPieChart extends PercentRelativeLayout {
         outerPieChart.setHighlightPerTapEnabled(selectionShiftEnabled);
     }
 
+    public PieChart getOuterPieChart() {
+        return outerPieChart;
+    }
+
+    public PieChart getInnerPieChart() {
+        return innerPieChart;
+    }
+
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
