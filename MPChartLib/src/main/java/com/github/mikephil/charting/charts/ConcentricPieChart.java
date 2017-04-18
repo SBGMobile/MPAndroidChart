@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.support.annotation.ColorRes;
 import android.support.percent.PercentLayoutHelper;
 import android.support.percent.PercentRelativeLayout;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 
@@ -78,6 +79,14 @@ public class ConcentricPieChart extends PercentRelativeLayout {
         ArrayList<PieEntry> innerEntries = getPieEntries(innerValues);
         innerDataSet = getPieDataSet(innerEntries);
         innerPieChart.setData(new PieData(innerDataSet));
+    }
+
+    public void setOuterColors(ArrayList<Integer> outerColors) {
+        setColors(outerDataSet, outerColors);
+    }
+
+    public void setInnerColors(ArrayList<Integer> innerColors) {
+        setColors(innerDataSet, innerColors);
     }
 
     public void setCenterLabel(String label) {
@@ -200,6 +209,13 @@ public class ConcentricPieChart extends PercentRelativeLayout {
         ArrayList<Integer> colors = new ArrayList<>();
         for (int i = 0; i < innerColors.length(); i++) {
             colors.add(innerColors.getColor(i, 0));
+        }
+        dataSet.setColors(colors);
+    }
+
+    private void setColors(PieDataSet dataSet, ArrayList<Integer> colors) {
+        for (int i = 0; i < colors.size(); i++) {
+            colors.set(i, ContextCompat.getColor(getContext(), colors.get(i)));
         }
         dataSet.setColors(colors);
     }
