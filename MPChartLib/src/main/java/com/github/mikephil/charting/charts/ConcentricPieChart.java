@@ -98,11 +98,11 @@ public class ConcentricPieChart extends PercentRelativeLayout {
     }
 
     public void setCenterLabelColor(@ColorRes int centerLabelColor) {
-        innerPieChart.setCenterTextColor(centerLabelColor);
+        innerPieChart.setCenterTextColor(ContextCompat.getColor(getContext(), centerLabelColor));
     }
 
     public void setCenterValueColor(@ColorRes int centerTextColor) {
-        outerPieChart.setCenterTextColor(centerTextColor);
+        outerPieChart.setCenterTextColor(ContextCompat.getColor(getContext(), centerTextColor));
     }
 
     public void setSelectionShiftEnabled(boolean selectionShiftEnabled) {
