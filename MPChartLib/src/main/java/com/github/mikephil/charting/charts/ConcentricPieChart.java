@@ -31,7 +31,7 @@ public class ConcentricPieChart extends PercentRelativeLayout {
     private static final float CENTER_TEXT_OFFSET = 0.037f;
     private static final float CENTER_VALUE_SIZE = 0.085f;
     private static final float CENTER_LABEL_SIZE = 0.055f;
-    private static final float SELECTION_SHIFT_SIZE = 0.048f;
+    private static final float SELECTION_SHIFT_SIZE = 0.016f;
 
     private PieDataSet innerDataSet;
     private PieDataSet outerDataSet;
