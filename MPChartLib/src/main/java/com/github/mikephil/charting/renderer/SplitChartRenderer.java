@@ -140,7 +140,10 @@ public class SplitChartRenderer extends DataRenderer {
         final int valueHeight = Utils.calcTextHeight(mValuePaint, formattedLeftValue);
         final int rightValueWidth = Utils.calcTextWidth(mValuePaint, formattedRightValue);
         final float fullValueHeight = valueHeight + textSpacer;
+        final float textHorizontalOffset = dataSet.getTextHorizontalOffset();
 
+        leftX += textHorizontalOffset;
+        rightX -= textHorizontalOffset;
         if (multiline) {
             y -= fullValueHeight;
         } else {

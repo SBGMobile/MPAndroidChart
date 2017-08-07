@@ -21,4 +21,8 @@ public interface ISplitDataSet extends IDataSet<PieEntry> {
     int getLineThickness();
 
     void setLineThickness(int lineThickness);
+
+    float getTextHorizontalOffset();
+
+    void setTextHorizontalOffset(float textHorizontalOffset);
 }
