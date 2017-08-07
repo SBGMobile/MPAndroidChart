@@ -8,7 +8,7 @@ import com.github.mikephil.charting.utils.Utils;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SplitDataSet extends DataSet<PieEntry> implements ISplitDataSet{
+public class SplitDataSet extends DataSet<PieEntry> implements ISplitDataSet {
 
 
     private int mLineThickness = 1;
@@ -16,6 +16,7 @@ public class SplitDataSet extends DataSet<PieEntry> implements ISplitDataSet{
     private Typeface mLabelTypeFace;
     private int mLabelTextColor;
     private float mLabelTextSize = 17f;
+    private float textHorizontalOffset;
 
     /**
      * Creates a new DataSet object with the given values (entries) it represents. Also, a
@@ -42,7 +43,6 @@ public class SplitDataSet extends DataSet<PieEntry> implements ISplitDataSet{
         copied.mColors = mColors;
         return copied;
     }
-
 
 
     @Override
@@ -91,4 +91,15 @@ public class SplitDataSet extends DataSet<PieEntry> implements ISplitDataSet{
     public void setLineThickness(int lineThickness) {
         this.mLineThickness = lineThickness;
     }
+
+    @Override
+    public float getTextHorizontalOffset() {
+        return textHorizontalOffset;
+    }
+
+    @Override
+    public void setTextHorizontalOffset(float textHorizontalOffset) {
+        this.textHorizontalOffset = textHorizontalOffset;
+    }
+
 }

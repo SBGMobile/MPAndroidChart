@@ -8,6 +8,7 @@ import android.view.WindowManager;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.SplitChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.data.SplitData;
 import com.github.mikephil.charting.data.SplitDataSet;
@@ -19,8 +20,6 @@ import java.util.ArrayList;
 
 public class SplitChartActivity extends DemoBase {
 
-    private SplitChart mChart;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,25 +28,38 @@ public class SplitChartActivity extends DemoBase {
         setContentView(R.layout.activity_splitchart);
 
 
-        mChart = (SplitChart) findViewById(R.id.chart1);
-        mChart.setDescription("");
-//        mChart.setExtraOffsets(5, 10, 5, 5);
+        SplitData splitData1 = createSplitData(2, 100);
+        configureSplitChart(splitData1, (SplitChart) findViewById(R.id.chart1));
 
-        mChart.setDragDecelerationFrictionCoef(0.95f);
-
-        mChart.setHighlightPerTapEnabled(true);
-
-
-        setData(2, 100);
-
-        mChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
-        // mChart.spin(2000, 0, 360);
+        SplitData splitData2 = createSplitData(2, 100);
+        SplitDataSet splitDataSet = (SplitDataSet) splitData2.getDataSet();
+        splitDataSet.setMultiline(true);
+        splitDataSet.setTextHorizontalOffset(50);
+        configureSplitChart(splitData2, (SplitChart) findViewById(R.id.chart2));
 
 
     }
 
+    private void configureSplitChart(SplitData splitData, SplitChart splitChart) {
+        splitChart.setDescription(new Description());
 
-    private void setData(int count, float range) {
+        splitChart.setDragDecelerationFrictionCoef(0.95f);
+
+        splitChart.setHighlightPerTapEnabled(true);
+
+
+        splitChart.setData(splitData);
+
+        // undo all highlights
+        splitChart.highlightValues(null);
+
+        splitChart.invalidate();
+
+        splitChart.animateY(1400, Easing.EasingOption.EaseInOutQuad);
+    }
+
+
+    private SplitData createSplitData(int count, float range) {
 
         float mult = range;
 
@@ -93,12 +105,8 @@ public class SplitChartActivity extends DemoBase {
         data.setLabelTextSize(11f);
         data.setValueTextColor(Color.GRAY);
         data.setValueTypeface(mTfLight);
-        mChart.setData(data);
 
-        // undo all highlights
-        mChart.highlightValues(null);
-
-        mChart.invalidate();
+        return data;
     }
 
 
