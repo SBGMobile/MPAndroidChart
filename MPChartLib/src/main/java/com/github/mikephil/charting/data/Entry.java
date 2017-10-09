@@ -7,6 +7,8 @@ import android.os.Parcelable;
 
 import com.github.mikephil.charting.utils.Utils;
 
+import java.math.BigDecimal;
+
 /**
  * Class representing one entry in the chart. Might contain multiple values.
  * Might only contain a single value depending on the used constructor.
@@ -29,6 +31,17 @@ public class Entry extends BaseEntry implements Parcelable {
      * @param y the y value (the actual value of the entry)
      */
     public Entry(float x, float y) {
+        super(y);
+        this.x = x;
+    }
+
+    /**
+     * A Entry represents one single entry in the chart.
+     *
+     * @param x the x value
+     * @param y the y value (the actual value of the entry)
+     */
+    public Entry(float x, BigDecimal y) {
         super(y);
         this.x = x;
     }

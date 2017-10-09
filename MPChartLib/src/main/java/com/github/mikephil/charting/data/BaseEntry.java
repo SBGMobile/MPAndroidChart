@@ -1,12 +1,14 @@
 package com.github.mikephil.charting.data;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Philipp Jahoda on 02/06/16.
  */
 public abstract class BaseEntry {
 
     /** the y value */
-    private float y = 0f;
+    private BigDecimal y = BigDecimal.ZERO;
 
     /** optional spot for additional data this Entry represents */
     private Object mData = null;
@@ -16,12 +18,16 @@ public abstract class BaseEntry {
     }
 
     public BaseEntry(float y) {
-        this.y = y;
+        this.y = BigDecimal.valueOf(y);
     }
 
     public BaseEntry(float y, Object data) {
         this(y);
         this.mData = data;
+    }
+
+    public BaseEntry(BigDecimal y) {
+        this.y = y;
     }
 
     /**
@@ -30,6 +36,10 @@ public abstract class BaseEntry {
      * @return
      */
     public float getY() {
+        return y.floatValue();
+    }
+
+    public BigDecimal getBigDecimal() {
         return y;
     }
 
@@ -39,7 +49,7 @@ public abstract class BaseEntry {
      * @param y
      */
     public void setY(float y) {
-        this.y = y;
+        this.y = BigDecimal.valueOf(y);
     }
 
     /**

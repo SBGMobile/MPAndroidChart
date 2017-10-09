@@ -3,12 +3,15 @@ package com.github.mikephil.charting.data;
 import android.annotation.SuppressLint;
 import android.util.Log;
 
+import java.math.BigDecimal;
+
 /**
  * Created by Philipp Jahoda on 31/05/16.
  */
 @SuppressLint("ParcelCreator")
 public class PieEntry extends Entry {
 
+    private String currency;
     private String label;
 
     public PieEntry(float value) {
@@ -22,6 +25,12 @@ public class PieEntry extends Entry {
     public PieEntry(float value, String label) {
         super(0f, value);
         this.label = label;
+    }
+
+    public PieEntry(BigDecimal value, String label, String currency) {
+        super(0f, value);
+        this.label = label;
+        this.currency = currency;
     }
 
     public PieEntry(float value, String label, Object data) {
@@ -44,6 +53,10 @@ public class PieEntry extends Entry {
 
     public void setLabel(String label) {
         this.label = label;
+    }
+
+    public String getCurrency() {
+        return currency;
     }
 
     @Deprecated
