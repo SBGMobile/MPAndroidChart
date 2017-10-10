@@ -9,6 +9,7 @@ import com.github.mikephil.charting.animation.ChartAnimator;
 import com.github.mikephil.charting.charts.SplitChart;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.data.SplitData;
+import com.github.mikephil.charting.formatter.BigDecimalValueFormatter;
 import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.interfaces.datasets.ISplitDataSet;
@@ -114,7 +115,7 @@ public class SplitChartRenderer extends DataRenderer {
         float rightX = width;
 
 
-        final IValueFormatter valueFormatter = dataSet.getValueFormatter();
+        final BigDecimalValueFormatter valueFormatter = new BigDecimalValueFormatter();
         final boolean multiline = dataSet.isMultiLine();
 
         final Typeface valueTypeFace = dataSet.getValueTypeface();
@@ -125,8 +126,8 @@ public class SplitChartRenderer extends DataRenderer {
 
         final PieEntry leftEntry = dataSet.getEntryForIndex(0);
         final PieEntry rightEntry = dataSet.getEntryForIndex(1);
-        final String formattedLeftValue = valueFormatter.getFormattedValue(leftEntry.getValue(), leftEntry, 0, mViewPortHandler);
-        final String formattedRightValue = valueFormatter.getFormattedValue(rightEntry.getValue(), rightEntry, 0, mViewPortHandler);
+        final String formattedLeftValue = valueFormatter.getFormattedValue(leftEntry.getBigDecimal(), leftEntry.getCurrency());
+        final String formattedRightValue = valueFormatter.getFormattedValue(rightEntry.getBigDecimal(), leftEntry.getCurrency());
 
         final int valueTextColor = dataSet.getValueTextColor();
         final int labelTextColor = dataSet.getLabelTextColor();
