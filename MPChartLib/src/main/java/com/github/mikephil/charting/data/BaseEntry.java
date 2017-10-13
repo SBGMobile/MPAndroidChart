@@ -27,7 +27,9 @@ public abstract class BaseEntry {
     }
 
     public BaseEntry(BigDecimal y) {
-        this.y = y;
+        if(y != null) {
+            this.y = y;
+        }
     }
 
     /**
